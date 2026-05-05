@@ -1,0 +1,282 @@
+{% extends "base.html" %}
+{% block content %}
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="reveal">
+        <div class="official-badge">🏛 Official Event Portal • National Level Hackathon</div>
+        <h1>HACKVERSE <span>2026</span></h1>
+        <p class="lead">
+          A professional innovation platform where students build real-world solutions across
+          Drones, EV, Software, Hardware, Cybersecurity, FinTech and BioTech.
+        </p>
+
+        <div class="motto">
+          <span>Built by 6</span>
+          <span>Powered by Vision</span>
+          <span>Feared by Competition</span>
+        </div>
+
+        <div class="btns">
+          <a class="btn btn-primary" href="{{ url_for('register') }}">Register Interest →</a>
+          <a class="btn btn-secondary" href="#domains">View Domains</a>
+        </div>
+      </div>
+
+      <div class="hero-panel reveal">
+        <div class="domain-orbit">
+          <div class="core-ring"></div>
+          <div class="core-text">
+            <small>DOMAIN FUSION</small>
+            <strong>6</strong>
+            <small>TRACKS</small>
+          </div>
+          <div class="orbit-icon o1">🛸</div>
+          <div class="orbit-icon o2">⚡</div>
+          <div class="orbit-icon o3">💻</div>
+          <div class="orbit-icon o4">🔧</div>
+          <div class="orbit-icon o5">🛡️</div>
+          <div class="orbit-icon o6">🧬</div>
+        </div>
+
+        <div class="stats">
+          <div class="stat"><b>6</b><p>Innovation Domains</p></div>
+          <div class="stat"><b>2-4</b><p>Team Size</p></div>
+          <div class="stat"><b>NSRIT</b><p>Host College</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container strip">
+    <div class="strip-card reveal"><b>{{ event_date }}</b><span>Event date placeholder. Final date can be updated later.</span></div>
+    <div class="strip-card reveal"><b>{{ team_size }}</b><span>Every team must follow the official team size.</span></div>
+    <div class="strip-card reveal"><b>{{ registration_fee }}</b><span>Payment screenshot upload is required during registration.</span></div>
+    <div class="strip-card reveal"><b>NSRIT</b><span>{{ venue }}</span></div>
+  </div>
+
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-title reveal">
+        <div class="eyebrow">About HACKVERSE</div>
+        <h2>Designed for serious builders and future innovators.</h2>
+        <p>
+          HACKVERSE 2026 is not only a coding event. It is a complete innovation challenge where
+          students from different branches can convert ideas into real impact.
+        </p>
+      </div>
+
+      <div class="two-grid">
+        <div class="glass reveal">
+          <h3>Event Objective</h3>
+          <p>
+            To encourage students to identify meaningful problems, build creative solutions,
+            collaborate effectively and present their work with confidence in front of faculty,
+            judges and inter-college participants.
+          </p>
+          <div class="points">
+            <div class="point"><i>01</i><span>Promote practical innovation and technical confidence.</span></div>
+            <div class="point"><i>02</i><span>Support both software and hardware-based project teams.</span></div>
+            <div class="point"><i>03</i><span>Create a professional platform for student leadership.</span></div>
+          </div>
+        </div>
+
+        <div class="glass reveal">
+          <h3>Evaluation Parameters</h3>
+          <p>
+            Each project will be evaluated on clarity, originality, working model/prototype,
+            feasibility, social or industrial impact and presentation quality.
+          </p>
+          <div class="points">
+            <div class="point"><i>✦</i><span>Innovation and uniqueness of idea.</span></div>
+            <div class="point"><i>✦</i><span>Technical execution and demo quality.</span></div>
+            <div class="point"><i>✦</i><span>Real-world usefulness and scalability.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="domains">
+    <div class="container">
+      <div class="section-title reveal">
+        <div class="eyebrow">Domain Tracks</div>
+        <h2>All domains. One battlefield.</h2>
+        <p>
+          Participants can choose one track and build solutions based on real-time needs,
+          modern industry trends and future-ready technologies.
+        </p>
+      </div>
+
+      <div class="domain-grid">
+        <article class="domain reveal" style="--accent:#00eaff">
+          <div class="domain-icon">🛸</div>
+          <h3>Drones</h3>
+          <p>UAV solutions for automation, monitoring, mapping, delivery and emergency response.</p>
+          <ul>
+            <li>Autonomous navigation</li>
+            <li>Surveillance and safety</li>
+            <li>Disaster response systems</li>
+            <li>Payload and delivery concepts</li>
+          </ul>
+        </article>
+
+        <article class="domain reveal" style="--accent:#56ff99">
+          <div class="domain-icon">⚡</div>
+          <h3>EV</h3>
+          <p>Electric mobility solutions for clean transport, smart energy and sustainable future.</p>
+          <ul>
+            <li>Battery management</li>
+            <li>Charging infrastructure</li>
+            <li>Smart mobility systems</li>
+            <li>Energy optimization</li>
+          </ul>
+        </article>
+
+        <article class="domain reveal" style="--accent:#b56cff">
+          <div class="domain-icon">💻</div>
+          <h3>Software</h3>
+          <p>Apps, platforms and intelligent systems that solve practical problems at scale.</p>
+          <ul>
+            <li>Web applications</li>
+            <li>Mobile apps</li>
+            <li>AI / ML solutions</li>
+            <li>Cloud and data dashboards</li>
+          </ul>
+        </article>
+
+        <article class="domain reveal" style="--accent:#ff9d2e">
+          <div class="domain-icon">🔧</div>
+          <h3>Hardware</h3>
+          <p>Electronic systems, sensors, robotics and IoT prototypes for real-world automation.</p>
+          <ul>
+            <li>Embedded systems</li>
+            <li>IoT devices</li>
+            <li>Robotics</li>
+            <li>PCB and prototyping</li>
+          </ul>
+        </article>
+
+        <article class="domain reveal" style="--accent:#00ffd0">
+          <div class="domain-icon">🛡️</div>
+          <h3>Cybersecurity</h3>
+          <p>Security-first solutions to protect systems, data, networks and digital users.</p>
+          <ul>
+            <li>Ethical hacking</li>
+            <li>Network security</li>
+            <li>Cloud security</li>
+            <li>Forensics and incident response</li>
+          </ul>
+        </article>
+
+        <article class="domain reveal" style="--accent:#4db8ff">
+          <div class="domain-icon">🧬</div>
+          <h3>FinTech & BioTech</h3>
+          <p>Innovation in finance, healthcare, biotechnology and data-driven public impact.</p>
+          <ul>
+            <li>Digital payments</li>
+            <li>Blockchain solutions</li>
+            <li>Health tech systems</li>
+            <li>Biotech innovation</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container fusion-panel reveal">
+      <div>
+        <div class="eyebrow">Domain Fusion Challenge</div>
+        <h3>Combine technologies. Build stronger ideas.</h3>
+        <p>
+          Teams can connect multiple domains for higher impact, such as Drone + AI, EV + IoT,
+          Cybersecurity + FinTech, or BioTech + Data Analytics. Cross-domain ideas will receive
+          strong attention during evaluation when execution is clear.
+        </p>
+      </div>
+      <div class="fusion-icons">
+        <div>🛸</div><div>⚡</div><div>💻</div>
+        <div>🔧</div><div>🛡️</div><div>🧬</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="flow">
+    <div class="container">
+      <div class="section-title reveal">
+        <div class="eyebrow">Event Flow</div>
+        <h2>Structured for smooth execution.</h2>
+        <p>Clear flow helps participants, coordinators, faculty and judges experience a professional event.</p>
+      </div>
+
+      <div class="process">
+        <div class="step reveal"><b>01</b><h3>Registration</h3><p>Teams submit member details, college name, contact and selected domain.</p></div>
+        <div class="step reveal"><b>02</b><h3>Problem Statement</h3><p>Teams choose a given problem or propose a strong self-defined problem.</p></div>
+        <div class="step reveal"><b>03</b><h3>Build Phase</h3><p>Teams build prototype, UI, circuit, model, dashboard, demo or pitch material.</p></div>
+        <div class="step reveal"><b>04</b><h3>Final Evaluation</h3><p>Judges review innovation, execution, impact, feasibility and presentation.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="rules">
+    <div class="container">
+      <div class="section-title reveal">
+        <div class="eyebrow">Guidelines</div>
+        <h2>Professional participation rules.</h2>
+        <p>These rules can be edited later based on final college approval and organizing committee decisions.</p>
+      </div>
+
+      <div class="rules-grid">
+        <div class="rule reveal"><h3>Team Size</h3><p>Recommended team size: 2 to 4 members. Final limit can be changed as per committee decision.</p></div>
+        <div class="rule reveal"><h3>Original Work</h3><p>Projects should be original. Reused work must be clearly explained with improvements.</p></div>
+        <div class="rule reveal"><h3>Submission</h3><p>Teams must submit idea title, domain, short abstract and demo/presentation material.</p></div>
+        <div class="rule reveal"><h3>Judging</h3><p>Judging will focus on innovation, execution, feasibility, impact and presentation clarity.</p></div>
+        <div class="rule reveal"><h3>Discipline</h3><p>Teams must follow venue rules, timing, faculty instructions and event coordination flow.</p></div>
+        <div class="rule reveal"><h3>Result</h3><p>Judges’ decision will be final. Winners will receive recognition, prizes and certificates.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="team">
+    <div class="container">
+      <div class="section-title reveal">
+        <div class="eyebrow">Organizing Core</div>
+        <h2>HexaCore Team</h2>
+        <p>Six minds. One vision. A clean, disciplined and execution-focused organizing team.</p>
+      </div>
+
+      <div class="team-grid">
+        <div class="member reveal"><div class="avatar">K</div><h3>Keerthi Abhishek</h3><p>8096069006</p></div>
+        <div class="member reveal"><div class="avatar">G</div><h3>Gopika</h3><p>8919006334</p></div>
+        <div class="member reveal"><div class="avatar">H</div><h3>Hima Sri</h3><p>8978454630</p></div>
+        <div class="member reveal"><div class="avatar">M</div><h3>Meghana</h3><p>7013509258</p></div>
+        <div class="member reveal"><div class="avatar">V</div><h3>Vyshnavi</h3><p>9182291759</p></div>
+        <div class="member reveal"><div class="avatar">T</div><h3>Teja</h3><p>9908418091</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="register">
+    <div class="container">
+      <div class="register-box reveal">
+        <div class="eyebrow">Scan • Register • Build • Compete</div>
+        <h2>Enter the HACKVERSE</h2>
+        <p>
+          Registration is connected to the live participant database. Admin can view all registrations
+          and domain-wise team count from the dashboard.
+        </p>
+        <div class="event-details-mini">
+          <p><b>College:</b> {{ college_name }}</p>
+          <p><b>Faculty Coordinators:</b> {{ faculty_coordinators | join(", ") }}</p>
+          <p><b>QR Link After Render:</b> https://your-app-name.onrender.com/register</p>
+        </div>
+        <div class="btns" style="justify-content:center">
+          <a class="btn btn-primary" href="{{ url_for('register') }}">Register Now →</a>
+          <a class="btn btn-secondary" href="{{ url_for('admin_login') }}">Admin Login</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

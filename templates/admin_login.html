@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section center-page">
+  <div class="login-card reveal">
+    <div class="eyebrow">Admin Access</div>
+    <h1>Control Panel Login</h1>
+    <p class="form-muted">Use coordinator credentials to view registrations.</p>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for msg in messages %}
+          <div class="alert">{{ msg }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+      <div class="field">
+        <label>Username</label>
+        <input type="text" name="username" required placeholder="Enter username">
+      </div>
+
+      <div class="field">
+        <label>Password</label>
+        <input type="password" name="password" required placeholder="Enter password">
+      </div>
+
+      <button class="btn btn-primary full-btn" type="submit">Login →</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

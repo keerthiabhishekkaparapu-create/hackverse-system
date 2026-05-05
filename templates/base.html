@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ title if title else "HACKVERSE 2026 | HexaCore Official Event Portal" }}</title>
+  <meta name="description" content="HACKVERSE 2026 by HexaCore - A professional national level hackathon across Drones, EV, Software, Hardware, Cybersecurity, FinTech and BioTech." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+  <div class="binary-bg">
+    <div class="binary-layer" id="binaryOne"></div>
+    <div class="binary-layer two" id="binaryTwo"></div>
+  </div>
+  <div class="grid-bg"></div>
+  <div class="scanline"></div>
+
+  <nav class="navbar">
+    <a class="brand" href="{{ url_for('index') }}">
+      <span class="logo-mark">H</span>
+      <span>HexaCore ⚡</span>
+    </a>
+
+    <div class="navlinks">
+      <a href="{{ url_for('index') }}#about">About</a>
+      <a href="{{ url_for('index') }}#domains">Domains</a>
+      <a href="{{ url_for('index') }}#flow">Flow</a>
+      <a href="{{ url_for('index') }}#rules">Rules</a>
+      <a href="{{ url_for('index') }}#team">Team</a>
+      <a href="{{ url_for('register') }}" class="nav-cta">Register</a>
+    </div>
+  </nav>
+
+  {% block content %}{% endblock %}
+
+  <footer>
+    <div class="container footer-grid">
+      <p><b>HACKVERSE 2026</b> • Presented by HexaCore ⚡</p>
+      <p>Built by 6. Powered by Vision. Feared by Competition.</p>
+      <p>NSRIT • Visakhapatnam</p>
+    </div>
+  </footer>
+
+  <script>
+    function generateBinary(lines, chars){
+      let out = "";
+      for(let i=0;i<lines;i++){
+        let line = "";
+        for(let j=0;j<chars;j++){
+          line += Math.random() > 0.5 ? "1" : "0";
+        }
+        out += line + "\\n";
+      }
+      return out;
+    }
+
+    const binaryOne = document.getElementById("binaryOne");
+    const binaryTwo = document.getElementById("binaryTwo");
+
+    if(binaryOne) binaryOne.textContent = generateBinary(80, 110);
+    if(binaryTwo) binaryTwo.textContent = generateBinary(95, 130);
+
+    const revealElements = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add("show");
+        }
+      });
+    },{threshold:.12});
+
+    revealElements.forEach(el=>observer.observe(el));
+
+    const orbitPanel = document.querySelector(".domain-orbit");
+    if(orbitPanel && window.innerWidth > 768){
+      orbitPanel.addEventListener("mousemove", (e)=>{
+        const rect = orbitPanel.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width - 0.5) * 10;
+        const y = ((e.clientY - rect.top) / rect.height - 0.5) * 10;
+        orbitPanel.style.transform = `perspective(900px) rotateY(${x}deg) rotateX(${-y}deg)`;
+      });
+
+      orbitPanel.addEventListener("mouseleave", ()=>{
+        orbitPanel.style.transform = "perspective(900px) rotateY(0deg) rotateX(0deg)";
+      });
+    }
+  </script>
+</body>
+</html>

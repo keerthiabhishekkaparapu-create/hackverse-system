@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section dashboard-page">
+  <div class="container">
+    <div class="dash-head reveal">
+      <div>
+        <div class="eyebrow">Live Dashboard</div>
+        <h1>Participant Control Panel</h1>
+        <p class="form-muted">Real-time registrations, domain-wise count, and payment screenshot verification.</p>
+      </div>
+
+      <div class="dash-actions">
+        <a href="{{ url_for('download_csv') }}" class="btn btn-secondary">Download CSV</a>
+        <a href="{{ url_for('logout') }}" class="btn btn-primary">Logout</a>
+      </div>
+    </div>
+
+    <div class="dash-stats reveal">
+      <div class="dash-card">
+        <p>Total Registrations</p>
+        <strong>{{ total }}</strong>
+      </div>
+
+      {% for d in domain_counts %}
+      <div class="dash-card">
+        <p>{{ d["domain"] }}</p>
+        <strong>{{ d["count"] }}</strong>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="filter-box">
+  <input type="text" id="searchInput" placeholder="Search team, leader, college, phone, UTR..." onkeyup="filterTable()">
+
+  <select id="domainFilter" onchange="filterTable()">
+    <option value="">All Domains</option>
+    <option value="Drones">Drones</option>
+    <option value="EV">EV</option>
+    <option value="Software">Software</option>
+    <option value="Hardware">Hardware</option>
+    <option value="Cybersecurity">Cybersecurity</option>
+    <option value="FinTech & BioTech">FinTech & BioTech</option>
+  </select>
+</div>
+
+    <div class="table-card reveal">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Team</th>
+            <th>Leader</th>
+            <th>College</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Domain</th>
+            <th>Idea</th>
+            <th>Payment</th>
+            <th>Registered At</th>
+            <th>UTR ID</th>
+            <th>Payment</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for p in participants %}
+          <tr>
+            <td>{{ p["id"] }}</td>
+            <td>{{ p["team_name"] }}</td>
+            <td>{{ p["leader_name"] }}</td>
+            <td>{{ p["college_name"] }}</td>
+            <td>{{ p["phone"] }}</td>
+            <td>{{ p["email"] }}</td>
+            <td>{{ p["domain"] }}</td>
+            <td>{{ p["idea_title"] }}</td>
+            <td>
+              {% if p["payment_screenshot"] %}
+              <a class="payment-link" href="{{ url_for('static', filename='uploads/' ~ p['payment_screenshot']) }}" target="_blank">View Screenshot</a>
+              {% else %}
+              Not uploaded
+              {% endif %}
+            </td>
+            <td>{{ p["utr_id"] }}</td>
+            <td>
+              <a href="{{ url_for('static', filename='uploads/' ~ p['payment_screenshot']) }}" target="_blank">
+            View
+            </a>
+          </td>
+            <td>{{ p["created_at"] }}</td>
+          </tr>
+          {% else %}
+          <tr>
+            <td colspan="10" class="empty">No registrations yet.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <script>
+function filterTable() {
+  const search = document.getElementById("searchInput").value.toLowerCase();
+  const domain = document.getElementById("domainFilter").value.toLowerCase();
+  const rows = document.querySelectorAll("tbody tr");
+
+  rows.forEach(row => {
+    const text = row.innerText.toLowerCase();
+    const cells = row.querySelectorAll("td");
+    const rowDomain = cells.length > 6 ? cells[6].innerText.toLowerCase() : "";
+
+    const searchMatch = text.includes(search);
+    const domainMatch = domain === "" || rowDomain === domain;
+
+    row.style.display = searchMatch && domainMatch ? "" : "none";
+  });
+}
+</script>
+    </div>
+  </div>
+</section>
+{% endblock %}
